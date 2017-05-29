@@ -12,8 +12,24 @@ public class Logs {
     private Date createtime;
 
     private String content;
+    
+    private int count;//统计点赞数
+    
+    /**
+	 * @return the count
+	 */
+	public int getCount() {
+		return count;
+	}
 
-    public Integer getId() {
+	/**
+	 * @param count the count to set
+	 */
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public Integer getId() {
         return id;
     }
 

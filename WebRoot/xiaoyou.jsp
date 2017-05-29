@@ -113,7 +113,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                    <span class="time">${sayVo.say.createtime}</span>
 		                    <a class="praise" href="javascript:;">赞</a>
 		                </div>
-		                <div class="praises-total" total="0" style="display: none;"></div>
+		                <div class="praises-total" uid="${sessionScope.uid }" sayid="${sayVo.say.id}" total="${sayVo.count}" style="display: none;"></div>
+		               	
 		                <div class="comment-list">
 		                <c:forEach items="${sayVo.reviewUserVos }" var="reviewUserVo">
 		                	<c:choose>
@@ -147,7 +148,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                            
 							    </c:otherwise>
 				 			</c:choose>
-		                            	
 		                            	${reviewUserVo.review.content}</p>
 		                            <p class="comment-time">
 		                                ${reviewUserVo.review.createtime}
@@ -160,7 +160,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                   </c:forEach> 
 		                </div>
 		                <div class="text-box">
-		                    <textarea class="comment" autocomplete="off">评论…</textarea>
+		                    <textarea class="comment" autocomplete="off" uid="${sessionScope.uid }" sayid="${sayVo.say.id}">评论…</textarea>
 		                    <button class="btn ">回 复</button>
 		                    <span class="word"><span class="length">0</span>/140</span>
 		                </div>
@@ -196,5 +196,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="js/xiaoyou.js"></script>
 	<script type="text/javascript" src="include/login.js"></script>
+	<script type="text/javascript" src="js/say.js"></script>
 </body>
 </html>

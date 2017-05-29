@@ -31,34 +31,95 @@ window.onload = function () {
      * @param box 每个分享的div容器
      * @param el 点击的元素
      */
+    //-------------------------点赞start-------------------------------------------------
     function praiseBox(box, el) {
         var txt = el.innerHTML;
         var praisesTotal = box.getElementsByClassName('praises-total')[0];
         var oldTotal = parseInt(praisesTotal.getAttribute('total'));
+        var uid=parseInt(praisesTotal.getAttribute('uid'));
+        var sayid=parseInt(praisesTotal.getAttribute('sayid'));
+       // alert(uid);
+        if(isNaN(uid)){
+        	alert("你还未登陆");
+        	return;
+        }
+        
         var newTotal;
-        if (txt == '赞') {
+        if (txt == '赞') {//点赞触发
             newTotal = oldTotal + 1;
+//          alert(el.parentNode.parentNode);
+            $(function(){
+            	//传入数据到数据库
+            	$.ajax({
+        			type:'post',
+        			url:'say/insertLove.action',
+        			contentType:'application/json;charset=utf-8',
+        			data:'{"uid":"'+uid+'","sayid":"'+sayid+'"}',
+        			//数据格式是json串
+        			success:function(data){//返回json结果
+        				alert(data);
+        			}
+        		});
+            });
             praisesTotal.setAttribute('total', newTotal);
             praisesTotal.innerHTML = (newTotal == 1) ? '我觉得很赞' : '我和' + oldTotal + '个人觉得很赞';
             el.innerHTML = '取消赞';
         }
         else {
             newTotal = oldTotal - 1;
+            $(function(){
+            	//传入数据到数据库
+            	$.ajax({
+        			type:'post',
+        			url:'say/deleteLove.action',
+        			contentType:'application/json;charset=utf-8',
+        			data:'{"uid":"'+uid+'","sayid":"'+sayid+'"}',
+        			//数据格式是json串
+        			success:function(data){//返回json结果
+        				alert(data);
+        			}
+        		});
+            });
+            
             praisesTotal.setAttribute('total', newTotal);
             praisesTotal.innerHTML = (newTotal == 0) ? '' : newTotal + '个人觉得很赞';
             el.innerHTML = '赞';
         }
         praisesTotal.style.display = (newTotal == 0) ? 'none' : 'block';
     }
-
+  //-----------------------------点赞取消赞---------------------------------------------
     /**
      * 发评论
      * @param box 每个分享的div容器
      * @param el 点击的元素
      */
-    function reply(box, el) {
+  //-------------------评论start----------------------
+    function reply(box, el) {//评论
         var commentList = box.getElementsByClassName('comment-list')[0];
         var textarea = box.getElementsByClassName('comment')[0];
+        
+        var uid=parseInt(textarea.getAttribute('uid'));//用户id
+        var sayid=parseInt(textarea.getAttribute('sayid'));//说说id
+        var content=textarea.value;//发表的内容
+        if(isNaN(uid)){
+        	alert("你还未登陆");
+        	return;
+        }else{
+        	$(function(){
+            	//传入数据到数据库
+            	$.ajax({
+        			type:'post',
+        			url:'say/insertReview.action',
+        			contentType:'application/json;charset=utf-8',
+        			data:'{"uid":"'+uid+'","sayid":"'+sayid+'","content":"'+content+'"}',
+        			//数据格式是json串
+        			success:function(data){//返回json结果
+//        				alert(data);
+        			}
+        		});
+            });
+        }
+        
         var commentBox = document.createElement('div');
         commentBox.className = 'comment-box clearfix';
         commentBox.setAttribute('user', 'self');
@@ -76,7 +137,7 @@ window.onload = function () {
         textarea.value = '';
         textarea.onblur();
     }
-
+  //-------------------评论end----------------------
     /**
      * 赞回复
      * @param el 点击的元素
