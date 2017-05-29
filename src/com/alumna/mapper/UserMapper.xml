@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alumna.mapper.UserMapper" >
+  <!-- 登陆 -->
+  <select id="findLogin" parameterType="com.alumna.po.User" resultType="com.alumna.po.User">
+  	SELECT user.* 
+  	FROM user 
+  	WHERE number=#{number} AND password=#{password}
+  </select>
+  <!-- 查询用户的角色 -->
+  <select id="findRole" parameterType="java.lang.Integer" resultType="java.lang.String">
+  	SELECT role FROM user WHERE id='${value}'
+  </select>
+  
+  <!-- 查找是否有该用户 -->
+  <select id="findnumber" parameterType="java.lang.String" resultType="java.lang.Integer">
+  	SELECT COUNT(*) AS num FROM user WHERE number='${value}'
+  </select>
+  
+  <!-- 注册 -->
+  <insert id="insertuser" parameterType="com.alumna.po.User">
+  	INSERT INTO user(number,password,role)VALUES(#{number},#{password},#{role})
+  </insert>
+  
+  <!-- 插入在校生信息 -->
+  <insert id="insertStudent" parameterType="com.alumna.po.Student">
+  	INSERT INTO student(uid,number,name,entranceyear,courtyard,specialty,banji,
+  	sex,birthday,signature,interest,tell,email,home,address,createtime)
+  	VALUES(#{uid},#{number},#{name},#{entranceyear},#{courtyard},#{specialty},#{banji},
+  	#{sex},#{birthday},#{signature},#{interest},#{tell},#{email},#{home},#{address},NOW())
+  </insert>
+  
+  <!-- 插入毕业生信息 -->
+  <insert id="insertGraduate" parameterType="com.alumna.po.Graduate">
+  	INSERT INTO graduate(uid,number,name,sex,birthday,entranceyear,courtyard,specialty,banji,
+  	signature,interest,tell,email,company,job,worktime,department,address,home,createtime)
+  	VALUES(#{uid},#{number},#{name},#{sex},#{birthday},#{entranceyear},#{courtyard},#{specialty},
+  	#{banji},#{signature},#{interest},#{tell},#{email},#{company},#{job},#{worktime},
+  	#{department},#{address},#{home},NOW())
+  </insert>
+  
+  
+  <!-- 根据传入的用户uid查询对应的在校生信息 -->
+  <select id="findStudent" parameterType="java.lang.Integer" resultType="com.alumna.po.Student">
+  	SELECT student.* FROM student WHERE uid=#{uid}
+  </select>
+  
+   <!-- 根据传入的用户uid查询对应的毕业生信息 -->
+  <select id="findGraduate" parameterType="java.lang.Integer" resultType="com.alumna.po.Graduate">
+  	SELECT graduate.* FROM graduate WHERE uid=#{uid}
+  </select>
+  
+  
+  
+  
+</mapper>

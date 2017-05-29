@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alumna.mapper.SayMapper" >
+	
+	<!-- 查询所有用户发表的说说 -->
+	<select id="findsayAll" resultType="com.alumna.po.Say">
+		SELECT id,uid,content,image,createtime FROM say ORDER BY createtime DESC
+	</select>
+	
+	
+	<!-- 根据传入的说说id查询所有的回复 -->
+	<select id="findReview" parameterType="java.lang.Integer" resultType="com.alumna.po.Review">
+		SELECT id,sayid,uid,content,createtime FROM review WHERE sayid='${value}' ORDER BY createtime DESC
+	</select>
+	
+	
+</mapper>
