@@ -14,9 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<title>校友网</title>
 	<link rel="stylesheet" href="css/xiaoyou.css">
 </head>
-
    <body>
-	
     <div class="bigbox">
     	<!-- 顶部开始 -->
 		<%@include file="include/top.jsp" %>
@@ -147,7 +145,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										</c:otherwise>
 									</c:choose>
 		                            
-							    
 							    </c:otherwise>
 				 			</c:choose>
 		                            	
