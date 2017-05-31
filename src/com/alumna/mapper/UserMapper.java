@@ -22,5 +22,19 @@ public interface UserMapper {
     //根据传入的id查询用户的角色
     public String findRole(int id)throws Exception;
     
+    //插入在校生信息
+    public void insertStudent(Student student)throws Exception;
+    
+    //插入毕业生信息
+    public void insertGraduate(Graduate graduate)throws Exception;
+    
+    
+    //更新在校生信息
+    public void updateStudent(Student student)throws Exception;
+    
+    //更新毕业生信息
+    public void updateGraduate(Graduate graduate)throws Exception;
+    
+    
     
 }

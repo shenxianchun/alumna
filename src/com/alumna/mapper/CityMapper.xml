@@ -1,5 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.alumna.mapper.CityMapper" >
-
+	<!-- 查询省份 -->
+	<select id="findcityList" resultType="com.alumna.po.City">
+		SELECT cityname FROM city WHERE provice='0'
+	</select>
+	<!-- 查询市区 -->
+	<select id="findprovinceList" parameterType="com.alumna.po.City" resultType="com.alumna.po.City">
+		SELECT cityname FROM city
+		WHERE provice=(SELECT id FROM city WHERE cityname='${cityname}' AND provice='0')
+	</select>
+	
+	<!-- 查询院系 -->
+	<select id="findcollegesList" resultType="com.alumna.po.Colleges">
+		SELECT name FROM colleges WHERE speciality_id='0'
+	</select>
+	<!-- 查询专业 -->
+	<select id="findspecialityList" parameterType="com.alumna.po.Colleges" resultType="com.alumna.po.Colleges">
+		SELECT `name` FROM colleges
+		WHERE speciality_id=(SELECT id FROM colleges WHERE `name`='${name}' AND speciality_id='0')
+	</select>
 </mapper>

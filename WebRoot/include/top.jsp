@@ -38,7 +38,7 @@
 	        	   <a  href="#">首页</a>
 	        	</li>
 	        	<li>
-	        	  <a  href="#">个人主页</a>
+	        	  <a  href="javascript:;" id="persion" class="<%=session.getAttribute("uid")%>">个人主页</a>
 	        	</li>
 	        	<li>
 	        	  <a  href="#">热门动态</a>

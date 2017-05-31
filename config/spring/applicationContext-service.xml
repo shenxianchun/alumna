@@ -17,4 +17,7 @@
 		
 		<bean id="sayService" class="com.alumna.service.impl.SayServiceImpl"/>
 		
+		<!-- 城市管理service -->
+		<bean id="cityService" class="com.alumna.service.impl.CityServiceImpl"/>
+		
 </beans>

@@ -17,164 +17,117 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
     <div class="bigbox">
     	<!-- 顶部开始 -->
-		<div class="header">
-	        <ul>
-	        	<li>
-	        	   <img src="img/logo.png" />
-	        	</li>
-	        	<li>		
-	    	       <span>大连</span>
-	    	       <input type="text" placeholder="搜索您感兴趣的关键字">
-	    	       <a href="#">搜 索</a>
-	        	</li>
-	        </ul>
-	    	<ul>
-	    		<li><a href="#">[登录]</a></li>
-	    		<li><a href="#">[注册]</a></li>
-	    	</ul>
-	    </div>
+		<%@include file="include/top.jsp" %>
 	    <!-- 顶部结束 -->
-	    <!-- 导航条开始 -->
-	    <div  class="center-content">
-	        <ul>
-	        	<li>
-	        	   <a  href="#">首页</a>
-	        	</li>
-	        	<li>
-	        	  <a  href="#">个人主页</a>
-	        	</li>
-	        	<li>
-	        	  <a  href="#">热门动态</a>
-	        	</li>
-	        	<li>
-	        	  <a  href="#">校园活动</a>
-	        	</li>
-	        </ul>
-	    </div>
-	    <!-- 导航条结束 -->
 	    <div class="box">
-	    	<div class="left">
-	    		<div class="person">
-	    			<img src="img/my.jpg" alt="头像">
-	    			<p><a href="#">张三</a>
-	    			<span>2013级</span></p>
-	    		</div>
-	    		<div class="leftlist">
-	    			<ul>
-	    				<li><a href="#">上传头像</a></li>
-	    				<li><a href="#">编辑资料</a></li>
-	    				<li><a href="#">发表文章</a></li>
-	    				<li><a href="#">我的相册</a></li>
-	    				<li><a href="#">找校友</a></li>
-	    				<li><a href="#">找同城</a></li>
-	    			</ul>
-	    		</div>
-	    	</div>
+	    <!-- 个人主页左边导航栏start -->
+	    	<%@include file="include/left.jsp" %>
+	    <!-- 个人主页左边导航栏end -->
 	    	<div class="middle">
 	    		<div class="newtext-box">
 		    		<img src="img/abc.png" alt="">
-		    		<textarea class="newcomment">说点什么…</textarea>
+		    		<textarea class="newcomment" uid="${sessionScope.uid }">说点什么…</textarea>
 		    		<button class="newbtn">发 表</button>
 			        <span class="word"><span class="length">0</span>/140</span>
 			    </div>
 
 			    <div id="list">
-			        <div class="box clearfix">
-			            <a class="close" href="javascript:;">×</a>
-			            <img class="head" src="img/my.jpg" alt=""/>
-			            <div class="content">
-			                <div class="main">
-			                    <p class="txt">
-			                        <span class="user">张三：</span>轻轻的我走了，正如我轻轻的来；我挥一挥衣袖，不带走一片云彩。我轻轻的招手，作别西天的云彩。
-			                    </p>
-			                    <img class="pic" src="img/img1.jpg" alt=""/>
-			                </div>
-			                <div class="info clearfix">
-			                    <span class="time">02-14 23:01</span>
-			                    <a class="praise" href="javascript:;">赞</a>
-			                </div>
-			                <div class="praises-total" total="4" style="display: block;">4个人觉得很赞</div>
-			                <div class="comment-list">
-			                    <div class="comment-box clearfix">
-			                        <img class="myhead" src="img/1.jpg" alt=""/>
-			                        <div class="comment-content">
-			                            <p class="comment-text"><span class="user">段王爷：</span>写的太好了。</p>
-			                            <p class="comment-time">
-			                                2014-02-19 14:36
-			                                <a href="javascript:;" class="comment-praise" total="1" my="0" style="display: inline-block">1 赞</a>
-			                                <a href="javascript:;" class="comment-operate">回复</a>
-			                            </p>
-			                        </div>
-			                    </div>
-			                </div>
-			                <div class="text-box">
-			                    <textarea class="comment" autocomplete="off">评论…</textarea>
-			                    <button class="btn ">回 复</button>
-			                    <span class="word"><span class="length">0</span>/140</span>
-			                </div>
-			            </div>
-			        </div>
-
-			        <div class="box clearfix">
-			            <a class="close" href="javascript:;">×</a>
-			            <img class="head" src="img/my.jpg" alt=""/>
-			            <div class="content">
-			                <div class="main">
-			                    <p class="txt">
-			                        <span class="user">张三：</span>三亚的海滩很漂亮。
-			                    </p>
-			                    <img class="pic" src="img/img5.jpg" alt=""/>
-			                </div>
-			                <div class="info clearfix">
-			                    <span class="time">02-14 23:01</span>
-			                    <a class="praise" href="javascript:;">赞</a>
-			                </div>
-			                <div class="praises-total" total="0" style="display: none;"></div>
-			                <div class="comment-list">
-			                    <div class="comment-box clearfix" user="other">
-			                        <img class="myhead" src="img/4.jpg" alt=""/>
-			                        <div class="comment-content">
-			                            <p class="comment-text"><span class="user">老鹰：</span>我也想去三亚。</p>
-			                            <p class="comment-time">
-			                                2014-02-19 14:36
-			                                <a href="javascript:;" class="comment-praise" total="0" my="0">赞</a>
-			                                <a href="javascript:;" class="comment-operate">回复</a>
-			                            </p>
-			                        </div>
-			                    </div>
-			                </div>
-			                <div class="text-box">
-			                    <textarea class="comment" autocomplete="off">评论…</textarea>
-			                    <button class="btn ">回 复</button>
-			                    <span class="word"><span class="length">0</span>/140</span>
-			                </div>
-			            </div>
-			        </div>
-
-			        <div class="box clearfix">
-			            <a class="close" href="javascript:;">×</a>
-			            <img class="head" src="img/my.jpg" alt=""/>
-			            <div class="content">
-			                <div class="main">
-			                    <p class="txt">
-			                        <span class="user">张三：</span>英国艺术家 Jane Perkins 能利用很多不起眼的东西进行创作，甚至是垃圾。首饰、纽扣、玩具等等都可以作为他创作的工具并创作出惟妙惟肖的画作，丝毫不逊色于色彩丰富的颜料。
-			                    </p>
-			                </div>
-			                <div class="info clearfix">
-			                    <span class="time">02-11 13:17</span>
-			                    <a class="praise" href="javascript:;">赞</a>
-			                </div>
-			                <div class="praises-total" total="0" style="display: none;"></div>
-			                <div class="comment-list">
-
-			                </div>
-			                <div class="text-box">
-			                    <textarea class="comment" autocomplete="off">评论…</textarea>
-			                    <button class="btn ">回 复</button>
-			                    <span class="word"><span class="length">0</span>/140</span>
-			                </div>
-			            </div>
-			        </div>
+			    	<c:forEach items="${sayVolist }" var="sayVo">
+		        <div class="box clearfix">
+		            <a class="close" sayid="${sayVo.say.id }" href="javascript:;" style="width:47px;">删除</a>
+		            <c:choose>
+				   <c:when test="${sayVo.student!=null}"> 
+				   	 <img class="head" src="${sayVo.student.photo}" alt=""/>
+		            <div class="content">
+		                <div class="main">
+		                    <p class="txt">
+		                    	<c:choose>
+					   				<c:when test="${sayVo.student.uid!=sessionScope.uid}"> 
+			                       		<span class="user">${sayVo.student.name}：</span>
+			                        </c:when>
+			                        <c:otherwise>
+			                        	<span class="user">我：</span>
+			                        </c:otherwise>
+		                        </c:choose>
+				   </c:when>
+				   <c:otherwise>
+				   	<img class="head" src="${sayVo.graduate.photo}" alt=""/>
+		            <div class="content">
+		                <div class="main">
+		                    <p class="txt">
+		                    	<c:choose>
+					   				<c:when test="${sayVo.graduate.uid!=sessionScope.uid}"> 
+			                       		<span class="user">${sayVo.graduate.name}：</span>
+			                        </c:when>
+			                        <c:otherwise>
+			                        	<span class="user">我：</span>
+			                        </c:otherwise>
+		                        </c:choose>
+				   </c:otherwise>
+				 </c:choose>${sayVo.say.content}
+		                    </p>
+		                    <img class="pic" src="${sayVo.say.image}" alt=""/>
+		                </div>
+		                <div class="info clearfix">
+		                    <span class="time">${sayVo.say.createtime}</span>
+		                    <a class="praise" href="javascript:;">赞</a>
+		                </div>
+		                <div class="praises-total" uid="${sessionScope.uid }" sayid="${sayVo.say.id}" total="${sayVo.count}" style="display: none;"></div>
+		               	
+		                <div class="comment-list">
+		                <c:forEach items="${sayVo.reviewUserVos }" var="reviewUserVo">
+		                	<c:choose>
+				   				<c:when test="${reviewUserVo.student!=null}"> 
+				   				<div class="comment-box clearfix" user="other">
+		                        <img class="myhead" src="${reviewUserVo.student.photo}" alt=""/>
+		                        <div class="comment-content">
+		                            <p class="comment-text">
+		                            <c:choose>
+										<c:when test="${reviewUserVo.student.uid!=sessionScope.uid}"> 
+											<span class="user">${reviewUserVo.student.name}</span>
+										</c:when>
+										<c:otherwise>
+											<span class="user">我：</span>
+										</c:otherwise>
+									</c:choose>
+					            </c:when>
+							    <c:otherwise>
+							    <div class="comment-box clearfix" user="other">
+		                        <img class="myhead" src="${reviewUserVo.graduate.photo}" alt=""/>
+		                        <div class="comment-content">
+		                            <p class="comment-text">
+		                            <c:choose>
+										<c:when test="${reviewUserVo.graduate.uid!=sessionScope.uid}"> 
+											<span class="user">${reviewUserVo.graduate.name}：</span>
+										</c:when>
+										<c:otherwise>
+											<span class="user">我：</span>
+										</c:otherwise>
+									</c:choose>
+		                            
+							    </c:otherwise>
+				 			</c:choose>
+		                            	${reviewUserVo.review.content}</p>
+		                            <p class="comment-time">
+		                                ${reviewUserVo.review.createtime}
+		                                <a href="javascript:;" class="comment-praise" total="0" my="0">赞</a>
+		                                <a href="javascript:;" class="comment-operate">回复</a>
+		                            </p>
+		                        </div>
+		                    </div>
+		                    
+		                   </c:forEach> 
+		                </div>
+		                <div class="text-box">
+		                    <textarea class="comment" autocomplete="off" uid="${sessionScope.uid }" sayid="${sayVo.say.id}">评论…</textarea>
+		                    <button class="btn ">回 复</button>
+		                    <span class="word"><span class="length">0</span>/140</span>
+		                </div>
+		            </div>
+		        </div>
+		        </c:forEach>
+			    	
+			    	
 			    </div>
 			    <div class="more">加载更多>></div>
 	    	</div>
@@ -222,6 +175,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 	    </div>
 	</div>
+	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="include/login.js"></script>
+	<script type="text/javascript" src="js/say.js"></script>
 </body>
 </html>

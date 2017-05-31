@@ -1,5 +1,6 @@
 package com.alumna.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.alumna.po.Graduate;
 import com.alumna.po.Student;
@@ -82,21 +84,54 @@ public class UserController {
 		return "退出成功";
 	}
 	
-	
-	
 	@RequestMapping("/insertUser")
-	public @ResponseBody boolean insertUser(@RequestBody User user,HttpSession session) throws Exception{
-		
+	public @ResponseBody List<String> insertUser(@RequestBody User user,HttpSession session) throws Exception{
+		List<String> list=new ArrayList<String>();
 		int num=userService.findnumber(user.getNumber());
 		if(num==0){
 			userService.insertuser(user);
-			session.setAttribute("uid", user.getId());
-			session.setAttribute("number", user.getNumber());
-			session.setAttribute("role", user.getRole());
+			User users=userService.findLogin(user);
+			session.setAttribute("uid", users.getId());
+			session.setAttribute("number", users.getNumber());
+			session.setAttribute("role", users.getRole());
+			if("0".equals(users.getRole())){
+				Student student=new Student();
+				student.setUid(users.getId());
+				student.setNumber(users.getNumber());
+				userService.insertStudent(student);
+			}else{
+				Graduate graduate=new Graduate();
+				graduate.setUid(users.getId());
+				graduate.setNumber(users.getNumber());
+				userService.insertGraduate(graduate);
+			}
+			list.add(users.getId().toString());
+			list.add(users.getRole());
 		}else{
-			return false;
+			return null;
 		}
-		return true;
+		return list;
 	}
+	
+	@RequestMapping("/findUser")
+	public ModelAndView findUser(HttpServletRequest request,HttpSession session)throws Exception{
+		int uid=Integer.parseInt(session.getAttribute("uid").toString());
+		String role=session.getAttribute("role").toString();
+		ModelAndView modelAndView=new ModelAndView();
+		if("0".equals(role)){
+			Student student=userService.findStudent(uid);
+			modelAndView.addObject("student",student);
+			modelAndView.setViewName("edit_student");
+		}else{
+			Graduate graduate=userService.findGraduate(uid);
+			modelAndView.addObject("graduate",graduate);
+			modelAndView.setViewName("edit_graduate");
+		}
+		return modelAndView;
+	}
+	
+	
+	
+	
 	
 }

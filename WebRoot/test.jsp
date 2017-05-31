@@ -13,7 +13,7 @@
 </form>
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript">
-$.ajax({
+/* $.ajax({
 	type:'post',
 	url:'say/findSayAll.action',
 	contentType:'application/json;charset=utf-8',
@@ -21,8 +21,7 @@ $.ajax({
 	success:function(data){//返回json结果
 		alert(data);
 	}
-});
-
+}); */
 </script>
 </body>
 </html>

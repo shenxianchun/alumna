@@ -11,6 +11,8 @@ public interface SayMapper {
 	//查询所有用户发表的说说 
 	public List<Say> findsayAll()throws Exception;
 	
+	//查询指定用户发表的说说 
+	public List<Say> findSayUser(String uid)throws Exception;
 	
 	//查询一条说说id对应的所有回复
 	public List<Review> findReview(int sayid)throws Exception;
@@ -30,6 +32,10 @@ public interface SayMapper {
 	//说说评论
 	public void insertReview(Review review)throws Exception;
 	
+	//发表说说
+	public void insertSay(Say say)throws Exception;
 	
+	//删除id
+	public void deleteSay(String id)throws Exception;
 	
 }

@@ -50,12 +50,12 @@ $(function(){
 			data:'{"number":"'+number+'","password":"'+password+'","role":"'+role+'"}',
 			//数据格式是json串
 			success:function(data){//返回json结果
-				if(data){
-					alert("注册成功");
-					window.location="personal.html";//重定向
-				}else{
+				if(data==""){
 					alert("注册失败,用户已存在");
 					location.reload();
+				}else{
+				alert("注册成功");
+				window.location="user/findUser.action";//重定向
 				}
 			}
 		});
@@ -73,5 +73,15 @@ $(function(){
 			}
 		});
 	});
+	$("#persion").click(function(){
+		var uid=$("#persion").prop("class");
+		if(uid=="null"){
+			alert("你还未登录");
+			window.location="/alumna/";//重定向
+			return;
+		}else{
+			window.location="say/findSayUser.action?uid="+uid;//重定向
+		}
+	})
 	
 })

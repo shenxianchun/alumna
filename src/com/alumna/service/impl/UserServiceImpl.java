@@ -48,4 +48,28 @@ public class UserServiceImpl implements UserService {
 		return userMapper.findRole(id);
 	}
 
+	@Override
+	public void insertStudent(Student student) throws Exception {
+		// TODO Auto-generated method stub
+		userMapper.insertStudent(student);
+	}
+
+	@Override
+	public void insertGraduate(Graduate graduate) throws Exception {
+		// TODO Auto-generated method stub
+		userMapper.insertGraduate(graduate);
+	}
+
+	@Override
+	public void updateStudent(Student student) throws Exception {
+		// TODO Auto-generated method stub
+		userMapper.updateStudent(student);
+	}
+
+	@Override
+	public void updateGraduate(Graduate graduate) throws Exception {
+		// TODO Auto-generated method stub
+		userMapper.updateGraduate(graduate);
+	}
+
 }

@@ -196,6 +196,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/index.js"></script>
 	<script type="text/javascript" src="js/xiaoyou.js"></script>
 	<script type="text/javascript" src="include/login.js"></script>
-	<script type="text/javascript" src="js/say.js"></script>
 </body>
 </html>

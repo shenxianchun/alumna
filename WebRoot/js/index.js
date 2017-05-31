@@ -22,6 +22,28 @@ window.onload = function () {
 
     //删除节点
     function removeNode(node) {
+    	
+    	var close=node.getElementsByClassName('close')[0];
+    	var id=close.getAttribute('sayid');
+    	
+//    	alert(id);
+    	if(id!=null){
+    		$(function(){
+            	//传入数据到数据库
+    			alert("删除的说说id:"+id);
+            	$.ajax({
+        			type:'post',
+        			url:'say/deleteSay.action',
+        			contentType:'application/json;charset=utf-8',
+        			data:'{"id":"'+id+'"}',
+        			//数据格式是json串
+        			success:function(data){//返回json结果
+        				
+        			}
+        		});
+            });
+    	}
+    	
         node.parentNode.removeChild(node);
         num--;
     }
@@ -302,11 +324,42 @@ window.onload = function () {
         }
         word.innerHTML = len + '/140';
     }
-    //发表按钮事件
+    //发表按钮事件---------------个人发表说说----------------------------------------------
     newbtn.onclick = function(){
         var box = this.parentNode.parentNode.children[1];
         var flag = box.children[0];
         var commentBox = document.createElement('div');
+        
+        var uid=parseInt(newtext.getAttribute('uid'));//用户id
+        
+        var content=newtext.value;//发表的内容
+        
+        var name=$("#name").text();
+        
+        if(isNaN(uid)){
+        	alert("你还未登陆");
+        	return;
+        }
+        if(content=="说点什么…"){
+        	alert("请填写发表内容");
+        	return;
+        }
+        
+        
+        $(function(){
+        	//传入数据到数据库
+        	$.ajax({
+    			type:'post',
+    			url:'say/insertSay.action',
+    			contentType:'application/json;charset=utf-8',
+    			data:'{"uid":"'+uid+'","content":"'+content+'"}',
+    			//数据格式是json串
+    			success:function(data){//返回json结果
+//    				alert(data);
+    			}
+    		});
+        });
+        
         commentBox.className = 'box clearfix';
         commentBox.innerHTML =
         '<a class="close" href="javascript:;">×</a>'+
@@ -314,7 +367,7 @@ window.onload = function () {
         '<div class="content">'+
             '<div class="main">'+
                 '<p class="txt">'+
-                    '<span class="user">张三：</span>'+ newtext.value +
+                    '<span class="user">'+name+'：</span>'+ newtext.value +
             '</div>'+
             '<div class="info clearfix">'+
                 '<span class="time">'+ formateDate(new Date()) +'</span>'+
@@ -334,6 +387,6 @@ window.onload = function () {
         num++;
         mHover ();
     }
-    
+  //发表按钮事件---------------个人发表说说end----------------------------------------------
 }
 

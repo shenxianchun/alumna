@@ -56,4 +56,22 @@ public class SayServiceImpl implements SayService {
 		sayMapper.insertReview(review);
 	}
 
+	@Override
+	public List<Say> findSayUser(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		return sayMapper.findSayUser(uid);
+	}
+
+	@Override
+	public void insertSay(Say say) throws Exception {
+		// TODO Auto-generated method stub
+		sayMapper.insertSay(say);
+	}
+
+	@Override
+	public void deleteSay(String id) throws Exception {
+		// TODO Auto-generated method stub
+		sayMapper.deleteSay(id);
+	}
+
 }

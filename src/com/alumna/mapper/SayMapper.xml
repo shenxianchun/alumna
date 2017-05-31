@@ -7,6 +7,11 @@
 		SELECT id,uid,content,image,createtime FROM say ORDER BY createtime DESC
 	</select>
 	
+	<!-- 查询指定用户发表的说说 -->
+	<select id="findSayUser" parameterType="java.lang.String" resultType="com.alumna.po.Say">
+		SELECT id,uid,content,image,createtime FROM say WHERE uid='${value}' ORDER BY createtime DESC
+	</select>
+	
 	<!-- 根据传入的说说id查询所有的回复 -->
 	<select id="findReview" parameterType="java.lang.Integer" resultType="com.alumna.po.Review">
 		SELECT id,sayid,uid,content,createtime FROM review WHERE sayid='${value}' ORDER BY createtime ASC
@@ -30,6 +35,16 @@
 	<insert id="insertReview" parameterType="com.alumna.po.Review">
 		INSERT INTO review(sayid,uid,content,createtime)VALUES(#{sayid},#{uid},#{content},NOW())
 	</insert>
+	
+	<!-- 发表说说 -->
+	<insert id="insertSay" parameterType="com.alumna.po.Say">
+		INSERT INTO say(uid,content,image,createtime)VALUES(#{uid},#{content},#{image},NOW())
+	</insert>
+	
+	<!-- 删除说说 -->
+	<delete id="deleteSay" parameterType="java.lang.String">
+		DELETE FROM say WHERE id='${value}'
+	</delete>
 	
 	
 </mapper>
