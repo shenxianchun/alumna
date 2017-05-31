@@ -131,6 +131,45 @@ public class UserController {
 	}
 	
 	
+	//更新在校生信息
+	@RequestMapping("/updateStudent")
+	public @ResponseBody boolean updateStudent(@RequestBody Student student,HttpSession session)throws Exception{
+		student.setUid(Integer.parseInt(session.getAttribute("uid").toString()));
+		userService.updateStudent(student);
+		
+		
+		student=userService.findStudent(student.getUid());
+		session.setAttribute("photo", student.getPhoto());
+		session.setAttribute("name", student.getName());
+		session.setAttribute("entranceyear", student.getEntranceyear().substring(0,4));
+		session.setAttribute("specialty", student.getSpecialty());
+		session.setAttribute("email", student.getEmail());
+		session.setAttribute("signature", student.getSignature());
+		
+		
+		
+		return true;
+	}
+	
+	//更新毕业生信息
+	@RequestMapping("/updateGraduate")
+	public @ResponseBody boolean updateGraduate(@RequestBody Graduate graduate,HttpSession session)throws Exception{
+		
+		graduate.setUid(Integer.parseInt(session.getAttribute("uid").toString()));
+		userService.updateGraduate(graduate);
+		
+		graduate=userService.findGraduate(graduate.getUid());
+		session.setAttribute("photo", graduate.getPhoto());
+		session.setAttribute("name", graduate.getName());
+		session.setAttribute("entranceyear", graduate.getEntranceyear().substring(0, 4));
+		session.setAttribute("specialty", graduate.getSpecialty());
+		session.setAttribute("email", graduate.getEmail());
+		session.setAttribute("signature", graduate.getSignature());
+		
+		
+		
+		return true;
+	}
 	
 	
 	

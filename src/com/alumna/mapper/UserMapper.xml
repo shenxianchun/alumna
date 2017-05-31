@@ -45,7 +45,7 @@
 		update graduate set name=#{name},sex=#{sex},birthday=#{birthday},entranceyear=#{entranceyear},
 		courtyard=#{courtyard},specialty=#{specialty},banji=#{banji},signature=#{signature},
 		interest=#{interest},tell=#{tell},email=#{email},company=#{company},job=#{job},
-		worktime=#{worktime},department=#{department},address=#{address},home=#{home}
+		worktime=#{worktime},address=#{address},home=#{home}
 		where uid=#{uid}
 	</update>
   
