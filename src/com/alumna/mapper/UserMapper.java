@@ -35,6 +35,10 @@ public interface UserMapper {
     //更新毕业生信息
     public void updateGraduate(Graduate graduate)throws Exception;
     
+    //更新在校生头像信息
+    public void updatePhotoStudent(Student student)throws Exception;
     
+    //更新毕业生头像信息
+    public void updatePhotoGraduate(Graduate graduate)throws Exception;
     
 }

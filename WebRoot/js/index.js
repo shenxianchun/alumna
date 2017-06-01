@@ -344,18 +344,20 @@ window.onload = function () {
         	alert("请填写发表内容");
         	return;
         }
+        var fileList = document.getElementById("fileimg").files;
         
-        
+       /* alert(fileList[0].name);*/
         $(function(){
         	//传入数据到数据库
         	$.ajax({
     			type:'post',
     			url:'say/insertSay.action',
     			contentType:'application/json;charset=utf-8',
-    			data:'{"uid":"'+uid+'","content":"'+content+'"}',
+    			data:'{"uid":"'+uid+'","content":"'+content+'","image":"'+fileList[0].name+'"}',
     			//数据格式是json串
     			success:function(data){//返回json结果
 //    				alert(data);
+    				location.reload();
     			}
     		});
         });

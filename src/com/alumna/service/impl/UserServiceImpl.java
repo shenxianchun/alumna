@@ -72,4 +72,16 @@ public class UserServiceImpl implements UserService {
 		userMapper.updateGraduate(graduate);
 	}
 
+	@Override
+	public void updatePhotoStudent(Student student) throws Exception {
+		// TODO Auto-generated method stub
+		userMapper.updatePhotoStudent(student);
+	}
+
+	@Override
+	public void updatePhotoGraduate(Graduate graduate) throws Exception {
+		// TODO Auto-generated method stub
+		userMapper.updatePhotoGraduate(graduate);
+	}
+
 }

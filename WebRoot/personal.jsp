@@ -26,9 +26,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	<div class="middle">
 	    		<div class="newtext-box">
 		    		<img src="img/abc.png" alt="">
-		    		<textarea class="newcomment" uid="${sessionScope.uid }">说点什么…</textarea>
-		    		<button class="newbtn">发 表</button>
-			        <span class="word"><span class="length">0</span>/140</span>
+		    		<form action="${pageContext.request.contextPath }/say/Submit.action" method="post" enctype="multipart/form-data">
+			    		<textarea class="newcomment" uid="${sessionScope.uid }">说点什么…</textarea>
+			    		 <!-- 添加照片 -->
+						<span class="newImg">
+							<input class="newfile" type="file" size="1" name="pictureFile" id="fileimg"/>
+							<img class="newphoto" src="img/photo.jpg" alt="添加照片">
+						</span>
+			    		<button class="newbtn">发 表</button>
+				        <span class="word"><span class="length">0</span>/140</span>
+			        </form>
 			    </div>
 
 			    <div id="list">

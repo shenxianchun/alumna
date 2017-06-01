@@ -206,6 +206,21 @@ div.center-content>ul li a:hover{
 	margin: 7px 10px 0 0; 
 	color: #666;
 }
+.middle .newtext-box .newImg{
+	overflow:hidden; 
+	position:absolute
+} 
+.middle .newtext-box .newfile{
+	opacity:0; 
+	margin-left:-28px;
+	margin-top: 2px;
+	position:absolute;
+}
+.middle .newtext-box .newphoto{
+	width: 28px;
+	float: left;
+	margin: 2px;
+}
 
 /*校友动态开始*/
 #list .clearfix:after { 

@@ -39,6 +39,11 @@
 		interest=#{interest},tell=#{tell},email=#{email},home=#{home},address=#{address}
 		where uid=#{uid}
 	</update>
+  	<!-- 更新在校生头像信息 -->
+	<update id="updatePhotoStudent" parameterType="com.alumna.po.Student">
+		update student set photo=#{photo} where uid=#{uid}
+	</update>
+  	
   	
   	<!-- 更新毕业生信息 -->
   	<update id="updateGraduate" parameterType="com.alumna.po.Graduate">
@@ -48,7 +53,10 @@
 		worktime=#{worktime},address=#{address},home=#{home}
 		where uid=#{uid}
 	</update>
-  
+  	<!-- 更新毕业生头像信息 -->
+  	<update id="updatePhotoGraduate" parameterType="com.alumna.po.Graduate">
+		update graduate set photo=#{photo} where uid=#{uid}
+	</update>
   
   
   

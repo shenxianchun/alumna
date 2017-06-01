@@ -1,16 +1,25 @@
 package com.alumna.controller;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.struts2.json.JSONUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alumna.po.Graduate;
@@ -45,7 +54,7 @@ public class UserController {
 	public @ResponseBody String findLogin(@RequestBody User user,HttpSession session) throws Exception{
 		System.out.println(user);
 		User users=userService.findLogin(user);
-		System.out.println(users+"==========");
+		System.out.println(users+"用户登陆==========");
 		if(users==null){
 			return "用户名或者密码错误";
 		}else{
@@ -154,10 +163,8 @@ public class UserController {
 	//更新毕业生信息
 	@RequestMapping("/updateGraduate")
 	public @ResponseBody boolean updateGraduate(@RequestBody Graduate graduate,HttpSession session)throws Exception{
-		
 		graduate.setUid(Integer.parseInt(session.getAttribute("uid").toString()));
 		userService.updateGraduate(graduate);
-		
 		graduate=userService.findGraduate(graduate.getUid());
 		session.setAttribute("photo", graduate.getPhoto());
 		session.setAttribute("name", graduate.getName());
@@ -166,11 +173,42 @@ public class UserController {
 		session.setAttribute("email", graduate.getEmail());
 		session.setAttribute("signature", graduate.getSignature());
 		
-		
-		
 		return true;
 	}
+	/*@RequestMapping(value = "/userImg", produces = "application/json;charset=UTF-8")
+	public @ResponseBody boolean userImg(@RequestBody MultipartFile files)throws Exception{
+		 boolean result = false;
+	        String realPath;
+	            if (!files.isEmpty()) {  
+	                   String uniqueName=files.getOriginalFilename();//得到文件名
+	                    realPath="G:"+File.separator+uniqueName;//文件上传的路径这里为E盘
+	                  
+	                    files.transferTo(new File(realPath));   // 转存文件
+	                    result = true;           
+	                }
 	
-	
+	        return result;
+	}*/
+	//更新头像信息
+	@RequestMapping("/updatePhoto")
+	public @ResponseBody boolean updatePhoto(@RequestBody User user,HttpSession session)throws Exception{
+		System.out.println(user.getNum()+"后缀名是《《《《《《《《《《");
+		Student student=new Student();
+		Graduate graduate=new Graduate();
+		String role=session.getAttribute("role").toString();
+		int uid=Integer.parseInt(session.getAttribute("uid").toString());
+		String photo="photo/"+session.getAttribute("number").toString()+user.getNum();
+		System.out.println(photo+"照片的地址加路径--------------------------");
+		if("0".equals(role)){
+			student.setUid(uid);
+			student.setPhoto(photo);
+			userService.updatePhotoStudent(student);
+		}else{
+			graduate.setUid(uid);
+			graduate.setPhoto(photo);
+			userService.updatePhotoGraduate(graduate);
+		}
+		return true;
+	}
 	
 }

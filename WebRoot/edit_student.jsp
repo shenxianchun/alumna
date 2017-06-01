@@ -269,6 +269,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<script type="text/javascript" src="js/city.js"></script>
 	<script type="text/javascript" src="js/colleges.js"></script>
 	<script type="text/javascript" src="js/student.js"></script>
+	<script type="text/javascript" src="include/login.js"></script>
 	<!-- <script type="text/javascript" src="js/index.js"></script> -->
 <script type="text/javascript">
 $(function(){
