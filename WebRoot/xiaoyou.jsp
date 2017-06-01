@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                            <p class="comment-text">
 		                            <c:choose>
 										<c:when test="${reviewUserVo.student.uid!=sessionScope.uid}"> 
-											<span class="user"><a href="say/findotherUser.action?uid=${reviewUserVo.student.uid}">${reviewUserVo.student.name}</a>：</span>
+											<a href="say/findotherUser.action?uid=${reviewUserVo.student.uid}"><span class="user">${reviewUserVo.student.name}：</span></a>
 										</c:when>
 										<c:otherwise>
 											<span class="user">我：</span>
@@ -139,7 +139,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                            <p class="comment-text">
 		                            <c:choose>
 										<c:when test="${reviewUserVo.graduate.uid!=sessionScope.uid}"> 
-											<span class="user"><a href="say/findotherUser.action?uid=${reviewUserVo.graduate.uid}">${reviewUserVo.graduate.name}</a>：</span>
+											<a href="say/findotherUser.action?uid=${reviewUserVo.graduate.uid}"><span class="user">${reviewUserVo.graduate.name}：</span></a>
 										</c:when>
 										<c:otherwise>
 											<span class="user">我：</span>
