@@ -1,0 +1,364 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+	background-color: #F1F4F5;
+}
+div.bigbox {
+	width: 1000px;
+	margin: 0 auto;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+
+/*顶部搜索*/
+div.header{	
+	padding: 10px;
+	margin-top: 10px;
+	border:2px solid #66D6D6;
+	background-color:#fff;
+}
+div.header ul li{
+	list-style:none;
+	display:inline-block;
+}
+div.header ul li img{
+	margin-left: 20px;
+	width:150px;
+	height:100px;
+	cursor:pointer;
+}
+div.header ul:first-child li:last-child{
+	margin-left:85px;
+	position:absolute;
+	margin-top:25px;
+	width:800px;
+}
+div.header ul:first-child a{
+	display:inline-block;
+	width:100px;
+	height:38px;
+	line-height:36px;
+	text-align:center;
+	color:#fff;
+	background-color:#00BEB7;
+	text-decoration:none;
+	margin-left:-112px;
+}
+div.header ul li span{
+	font-size:18px;
+	font-family:"微软雅黑";
+}
+div.header ul li input{
+	width:400px;
+	height:42px;
+	border:2px solid #00BEB7;
+	font-size:14px;
+    padding-left:10px;
+	outline:none;
+	margin-left:10px;
+}
+div.header ul:last-child{
+	padding: 0px 10px;
+	width:100px;
+	height:30px;
+	line-height:30px;
+	background-color:#00BEB7;
+	position:absolute;
+	margin-top:-112px;
+	margin-left:867px;
+	text-align: center;
+}
+div.header ul:last-child li a{
+	font-size:16px;
+	font-family:"微软雅黑";
+	text-decoration: none;
+	color:#fff;
+}
+/*导航栏*/
+div.center-content>ul{
+	  background-color:#00BEB7;
+}
+div.center-content>ul li{
+     list-style: none;
+     display:inline-block;
+     margin-left:20px;
+}
+div.center-content>ul li:nth-child(3){
+	margin-left:25px;
+	width:200px;
+	box-shadow:0px 0px 2px 1px #8B8686;
+	text-align:center;
+}
+div.center-content>ul li a{
+	text-decoration:none;
+	font-size:16px;
+	font-family:"微软雅黑";
+	color:#fff;
+	display: inline-block;
+	width:120px;
+	height:55px;
+	line-height:57px;
+	text-align:center;
+}
+div.center-content>ul li:first-child a:hover{
+	background-color:#00BEB7;
+}
+div.center-content>ul li a:hover{
+	background-color:#00B4AE;
+}
+
+/*校友动态开始*/
+#list .clearfix:after { 
+	content:"."; 
+	display:block; 
+	height:0; 
+	clear:both; 
+	visibility:hidden
+}
+#list .clearfix { 
+	*height:1%;
+}
+#list {
+	float: left;
+	padding-left: 50px; 
+	padding-top: 20px; 
+	text-align: left; 
+	width: 680px;
+	background-color: #fff;
+}
+#list .box { 
+	border-top: 1px solid #eee; 
+	position: relative;  
+	width: 630px; 
+	padding: 20px 0
+}
+#list .box:hover .close { 
+	display: block;
+}
+#list .close { 
+	display: none; 
+	top:0px; 
+	right: 0px; 
+	width: 28px; 
+	height: 28px; 
+	border: 1px solid #eee; 
+	position: absolute; 
+	background: #f2f4f7; 
+	line-height: 27px; 
+	text-align: center;
+}
+#list .close:hover { 
+	background: #c8d2e2; 
+	text-decoration: none;
+}
+#list .head { 
+	float: left; 
+	width: 60px; 
+	height: 60px; 
+	margin-right: 10px;
+}
+#list .content { 
+	float: left; 
+	width: 470px; 
+	margin-left: 20px;
+}
+#list .main { 
+	margin-bottom: 10px;
+}
+#list .txt { 
+
+	margin-bottom: 10px;
+}
+#list .user { 
+	color: #369; }
+#list .pic { 
+	margin-right: 5px; 
+	width: 200px; 
+	border: 1px solid #eee;
+}
+#list .info { 
+	height: 20px; 
+	line-height: 19px; 
+	font-size: 12px; 
+	margin: 0 0 10px 0;
+}
+#list .info .time { 
+	color: #ccc; 
+	float: left; 
+	height: 20px; 
+	padding-left: 20px; 
+	background: url("img/bg1.jpg") no-repeat left top;
+}
+#list .info .praise { 
+	color: #369; 
+	float: right; 
+	height: 20px; 
+	padding-left: 18px; 
+	background: url("img/bg2.jpg") no-repeat left top;
+}
+#list .info .praise:hover { 
+	text-decoration: underline; 
+	background: url("img/bg3.jpg") no-repeat left top;
+}
+#list .praises-total { 
+	margin: 0 0 10px 0; 
+	height: 20px; 
+	background: url("img/praise.png") no-repeat 5px 5px rgb(247, 247, 247); 
+	padding: 5px 0 5px 25px; 
+	line-height: 19px;
+}
+#list .comment-box { 
+	padding: 10px 0; 
+	border-top: 1px solid #eee;
+}
+#list .comment-box:hover { 
+	background: rgb(247, 247, 247);
+}
+#list .comment-box .myhead { 
+	float: left; width: 30px; 
+	height: 30px; margin-right: 10px;
+}
+#list .comment-box .comment-content { 
+	float: left; 
+	width: 400px; 
+}
+#list .comment-box .comment-content .comment-time { 
+	color: #ccc; 
+	margin-top: 3px; 
+	line-height: 16px; 
+	position: relative;
+}
+#list .comment-box .comment-content .comment-praise { 
+	display: none; 
+	color: #369; 
+	padding-left: 17px; 
+	height: 20px; 
+	background: url("img/praise.png") no-repeat;  
+	position: absolute; 
+	bottom: 0px; 
+	right: 44px;
+}
+#list .comment-box .comment-content .comment-operate { 
+	display: none; 
+	color: #369; 
+	height: 20px;  
+	position: absolute; 
+	bottom: 0px; 
+	right: 10px;
+}
+#list .comment-box .comment-content:hover .comment-praise { 
+	display: inline-block;
+}
+#list .comment-box .comment-content:hover .comment-operate { 
+	display: inline-block;
+}
+#list .text-box .comment { 
+	border: 1px solid #9BA3AF; 
+	display: block; 
+	height: 15px; 
+	width: 458px; 
+	padding: 5px; 
+	resize: none; 
+	color: #174B8E
+}
+#list .text-box .btn { 
+	font-size: 12px; 
+	font-weight: bold; 
+	display: none; 
+	float: right; 
+	width: 65px; 
+	height: 25px; 
+	border: 1px solid #0C528D; 
+	color: #fff; 
+	background: #4679AC;
+}
+#list .text-box .btn-off { 
+	border: 1px solid #ccc; 
+	color: #ccc; 
+	background: #F7F7F7;
+}
+#list .text-box .word{ 
+	display: none; 
+	float: right; 
+	margin: 7px 10px 0 0; 
+	color: #666;
+}
+#list .text-box-on .comment{ 
+	height: 50px; 
+	color: #333;
+}
+#list .text-box-on .btn{ 
+	display: inline;
+}
+#list .text-box-on .word{ 
+	display: inline;
+}
+.concent{
+	margin-top: 6px;
+}
+.right{
+	width: 265px;
+	float: right;
+	margin-left: 5px;
+	padding: 5px 0;
+	background-color: #fff;
+	position: relative;
+}
+.right ul img{
+	width: 245px;
+	margin-left: 10px;
+}
+.right .meau1{
+	position: absolute;
+	top: 53px;
+	left: 97px;
+	color: black;
+	font-size: 20px;
+} 
+.right .meau1:hover{
+	font-size: 25px;
+	left: 86px;
+	top: 50px;
+}
+.right .meau2{
+	position: absolute;
+	top: 166px;
+	left: 97px;
+	color: black;
+	font-size: 20px;
+} 
+.right .meau2:hover{
+	font-size: 25px;
+	left: 86px;
+	top: 162px;
+}
+.right .meau3{
+	position: absolute;
+	top: 282px;
+	left: 97px;
+	color: black;
+	font-size: 20px;
+} 
+.right .meau3:hover{
+	font-size: 25px;
+	left: 86px;
+	top: 280px;
+}
+.right .meau4{
+	position: absolute;
+	top: 395px;
+	left: 97px;
+	color: black;
+	font-size: 20px;
+} 
+.right .meau4:hover{
+	font-size: 25px;
+	left: 86px;
+	top: 392px;
+}
