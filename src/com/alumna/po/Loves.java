@@ -12,8 +12,24 @@ public class Loves {
     private Date lovetime;
 
     private String state;
+    
+    private String num;
+    
+    /**
+	 * @return the num
+	 */
+	public String getNum() {
+		return num;
+	}
 
-    public Integer getId() {
+	/**
+	 * @param num the num to set
+	 */
+	public void setNum(String num) {
+		this.num = num;
+	}
+
+	public Integer getId() {
         return id;
     }
 

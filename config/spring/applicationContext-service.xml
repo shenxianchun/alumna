@@ -20,4 +20,7 @@
 		<!-- 城市管理service -->
 		<bean id="cityService" class="com.alumna.service.impl.CityServiceImpl"/>
 		
+		<bean id="logsService" class="com.alumna.service.impl.LogsServiceImpl"/>
+		
+		
 </beans>

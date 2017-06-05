@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                    <p class="txt">
 		                    	<c:choose>
 					   				<c:when test="${sayVo.student.uid!=sessionScope.uid}"> 
-			                       		<span class="user">${sayVo.student.name}：</span>
+			                       		<a href="say/findotherUser.action?uid=${sayVo.student.uid}"><span class="user">${sayVo.student.name}：</span></a>
 			                        </c:when>
 			                        <c:otherwise>
 			                        	<span class="user">我：</span>
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                    <p class="txt">
 		                    	<c:choose>
 					   				<c:when test="${sayVo.graduate.uid!=sessionScope.uid}"> 
-			                       		<span class="user">${sayVo.graduate.name}：</span>
+			                       		<a href="say/findotherUser.action?uid=${sayVo.graduate.uid}"><span class="user">${sayVo.graduate.name}：</span></a>
 			                        </c:when>
 			                        <c:otherwise>
 			                        	<span class="user">我：</span>
@@ -91,7 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                            <p class="comment-text">
 		                            <c:choose>
 										<c:when test="${reviewUserVo.student.uid!=sessionScope.uid}"> 
-											<span class="user">${reviewUserVo.student.name}</span>
+											<a href="say/findotherUser.action?uid=${reviewUserVo.student.uid}"><span class="user">${reviewUserVo.student.name}</span></a>
 										</c:when>
 										<c:otherwise>
 											<span class="user">我：</span>
@@ -105,7 +105,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                            <p class="comment-text">
 		                            <c:choose>
 										<c:when test="${reviewUserVo.graduate.uid!=sessionScope.uid}"> 
-											<span class="user">${reviewUserVo.graduate.name}：</span>
+											<a href="say/findotherUser.action?uid=${reviewUserVo.graduate.uid}"><span class="user">${reviewUserVo.graduate.name}：</span></a>
 										</c:when>
 										<c:otherwise>
 											<span class="user">我：</span>

@@ -12,8 +12,26 @@ public class Review {
     private String content;
 
     private Date createtime;
+    
+    private String num;
+    
+    
 
-    public Integer getId() {
+    /**
+	 * @return the num
+	 */
+	public String getNum() {
+		return num;
+	}
+
+	/**
+	 * @param num the num to set
+	 */
+	public void setNum(String num) {
+		this.num = num;
+	}
+
+	public Integer getId() {
         return id;
     }
 

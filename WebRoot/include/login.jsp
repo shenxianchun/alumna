@@ -21,15 +21,15 @@ if(number!=null){%>
 				<li style="margin-top: 17px;">
 					<ul class="user_atten clearfix">
 						<li>
-							<strong>88</strong>
+							<strong><%=session.getAttribute("say") %></strong>
 							<span>动态</span>
 						</li>
 						<li>
-							<strong>128</strong>
+							<strong><%=session.getAttribute("loves") %></strong>
 							<span>赞</span>
 						</li>
 						<li>
-							<strong>105</strong>
+							<strong><%=session.getAttribute("review") %></strong>
 							<span>评论</span>
 						</li>
 					</ul>

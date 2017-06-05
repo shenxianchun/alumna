@@ -1,5 +1,7 @@
 package com.alumna.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alumna.mapper.UserMapper;
@@ -82,6 +84,48 @@ public class UserServiceImpl implements UserService {
 	public void updatePhotoGraduate(Graduate graduate) throws Exception {
 		// TODO Auto-generated method stub
 		userMapper.updatePhotoGraduate(graduate);
+	}
+
+	@Override
+	public List<Student> findStudentSearch(String s_where) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.findStudentSearch(s_where);
+	}
+
+	@Override
+	public List<Graduate> findGraduateSearch(String s_where) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.findGraduateSearch(s_where);
+	}
+
+	@Override
+	public List<Student> findStudentCity(String s_where) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.findStudentCity(s_where);
+	}
+
+	@Override
+	public List<Graduate> findGraduateCity(String s_where) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.findGraduateCity(s_where);
+	}
+
+	@Override
+	public int findCountsay(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.findCountsay(uid);
+	}
+
+	@Override
+	public int findCountloves(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.findCountloves(uid);
+	}
+
+	@Override
+	public int findCountreview(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.findCountreview(uid);
 	}
 
 }

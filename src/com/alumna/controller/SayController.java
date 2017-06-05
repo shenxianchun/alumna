@@ -25,6 +25,7 @@ import com.alumna.po.User;
 import com.alumna.po.UserSayVo;
 import com.alumna.service.SayService;
 import com.alumna.service.UserService;
+import com.mysql.fabric.xmlrpc.base.Array;
 
 @Controller
 @RequestMapping("/say")
@@ -37,7 +38,7 @@ public class SayController {
 	
 	//查找全部说说
 	@RequestMapping("/findSayAll")
-	public ModelAndView findSayAll()throws Exception{
+	public ModelAndView findSayAll(HttpServletRequest request)throws Exception{
 		List<UserSayVo> sayVolist=new ArrayList<UserSayVo>();
 		ModelAndView modelAndView=new ModelAndView();
 		List<Say> saylist=sayService.findsayAll();
@@ -84,7 +85,14 @@ public class SayController {
 		}
 		System.out.println("=============="+sayVolist);
 		modelAndView.addObject("sayVolist",sayVolist);
-		modelAndView.setViewName("xiaoyou");
+		String flag=request.getParameter("falg");
+		System.out.println(flag+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		if("flag".equals(flag)){
+			modelAndView.setViewName("hot");
+		}else{
+			modelAndView.setViewName("xiaoyou");
+		}
+		
 		return modelAndView;
 	}
 	
@@ -148,6 +156,145 @@ public class SayController {
 		modelAndView.setViewName("personal");
 		return modelAndView;
 	}
+	
+	
+	
+	//点赞最多排序
+	@RequestMapping("/findCountloves")
+	public ModelAndView findCountloves()throws Exception{
+		List<UserSayVo> sayVolist=new ArrayList<UserSayVo>();
+		ModelAndView modelAndView=new ModelAndView();
+		
+		/*List<Say> saylist=new ArrayList<Say>();*/
+		
+		List<Loves> loves=sayService.findCountloves();
+		/*for(Loves love:loves){
+			Say say=sayService.findsayIDAll(love.getSayid());
+			saylist.add(say);
+		}*/
+		
+		
+		for(Loves love:loves){
+			Say say=sayService.findsayIDAll(love.getSayid());
+			UserSayVo userSayVo=new UserSayVo();
+			
+			userSayVo.setSay(say);//设置一条说说
+			userSayVo.setCount(Integer.parseInt(love.getNum()));
+			
+			System.out.println("------------说说start-----------------------");
+			System.out.println("这是第一条说说："+say.getContent()+"说说id："+say.getId()+"用户uid:"+say.getUid());
+			System.out.println("------------说说end,接下来是该条说说对应的评论-----------------------");
+			userSayVo.setCount(sayService.findCountLoves(say.getId()));//设置点赞的人数
+			List<Review> reviewlist=sayService.findReview(say.getId());//得到回复list
+			
+			List<ReviewUserVo> reviewUserVos=new ArrayList<ReviewUserVo>();//创建回复扩展类
+			for(Review review:reviewlist){
+				ReviewUserVo reviewUserVo=new ReviewUserVo();
+				reviewUserVo.setReview(review);//设置第一条评论
+				String role=userService.findRole(review.getUid());
+				if("0".equals(role)){
+					Student student=userService.findStudent(review.getUid());
+					reviewUserVo.setStudent(student);
+					System.out.println("来自"+student.getName()+"的评论");
+				}else{
+					Graduate graduate=userService.findGraduate(review.getUid());
+					reviewUserVo.setGraduate(graduate);
+					System.out.println("来自"+graduate.getName()+"的评论");
+				}
+				System.out.println("评论的内容是："+review.getContent());
+				reviewUserVos.add(reviewUserVo);
+			}
+			System.out.println("------------评论end-----------------------");
+			userSayVo.setReviewUserVos(reviewUserVos);
+			
+			String role=userService.findRole(say.getUid());
+			if("0".equals(role)){
+				Student student=userService.findStudent(say.getUid());
+				userSayVo.setStudent(student);
+				System.out.println("这是"+student.getName()+"发表的说说");
+			}else{
+				Graduate graduate=userService.findGraduate(say.getUid());
+				System.out.println("这是"+graduate.getName()+"发表的说说");
+				userSayVo.setGraduate(graduate);
+			}
+			sayVolist.add(userSayVo);//添加一个信息
+		}
+		System.out.println("=============="+sayVolist);
+		modelAndView.addObject("sayVolist",sayVolist);
+		modelAndView.setViewName("hot");
+		return modelAndView;
+	}
+	
+	
+	
+	//评论最多排序
+	@RequestMapping("/findCountreview")
+	public ModelAndView findCountreview()throws Exception{
+		List<UserSayVo> sayVolist=new ArrayList<UserSayVo>();
+		ModelAndView modelAndView=new ModelAndView();
+		
+		/*List<Say> saylist=new ArrayList<Say>();*/
+		
+		List<Review> reviews=sayService.findCountreview();
+		/*for(Review review:reviews){
+			Say say=sayService.findsayIDAll(review.getSayid());
+			saylist.add(say);
+		}*/
+		
+		
+		for(Review review_one:reviews){
+			Say say=sayService.findsayIDAll(review_one.getSayid());
+			UserSayVo userSayVo=new UserSayVo();
+			
+			userSayVo.setSay(say);//设置一条说说
+			userSayVo.setCount(Integer.parseInt(review_one.getNum()));
+			
+			System.out.println("------------说说start-----------------------");
+			System.out.println("这是第一条说说："+say.getContent()+"说说id："+say.getId()+"用户uid:"+say.getUid());
+			System.out.println("------------说说end,接下来是该条说说对应的评论-----------------------");
+			userSayVo.setCount(sayService.findCountLoves(say.getId()));//设置点赞的人数
+			List<Review> reviewlist=sayService.findReview(say.getId());//得到回复list
+			
+			List<ReviewUserVo> reviewUserVos=new ArrayList<ReviewUserVo>();//创建回复扩展类
+			for(Review review:reviewlist){
+				ReviewUserVo reviewUserVo=new ReviewUserVo();
+				reviewUserVo.setReview(review);//设置第一条评论
+				String role=userService.findRole(review.getUid());
+				if("0".equals(role)){
+					Student student=userService.findStudent(review.getUid());
+					reviewUserVo.setStudent(student);
+					System.out.println("来自"+student.getName()+"的评论");
+				}else{
+					Graduate graduate=userService.findGraduate(review.getUid());
+					reviewUserVo.setGraduate(graduate);
+					System.out.println("来自"+graduate.getName()+"的评论");
+				}
+				System.out.println("评论的内容是："+review.getContent());
+				reviewUserVos.add(reviewUserVo);
+			}
+			System.out.println("------------评论end-----------------------");
+			userSayVo.setReviewUserVos(reviewUserVos);
+			
+			String role=userService.findRole(say.getUid());
+			if("0".equals(role)){
+				Student student=userService.findStudent(say.getUid());
+				userSayVo.setStudent(student);
+				System.out.println("这是"+student.getName()+"发表的说说");
+			}else{
+				Graduate graduate=userService.findGraduate(say.getUid());
+				System.out.println("这是"+graduate.getName()+"发表的说说");
+				userSayVo.setGraduate(graduate);
+			}
+			sayVolist.add(userSayVo);//添加一个信息
+		}
+		System.out.println("=============="+sayVolist);
+		modelAndView.addObject("sayVolist",sayVolist);
+		modelAndView.setViewName("hot");
+		return modelAndView;
+	}
+		
+	
+	
 	
 	//查找别的用户说说
 	@RequestMapping("/findotherUser")

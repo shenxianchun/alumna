@@ -46,5 +46,19 @@
 		DELETE FROM say WHERE id='${value}'
 	</delete>
 	
+	<!-- 统计每条说说的点赞数 -->
+	<select id="findCountloves" resultType="com.alumna.po.Loves">
+		SELECT sayid,count(*)AS num from loves  GROUP BY sayid ORDER BY num DESC
+	</select>
+	
+	<!-- 统计每条说说的评论数 -->
+	<select id="findCountreview" resultType="com.alumna.po.Review">
+		SELECT sayid,count(*)AS num FROM review GROUP BY sayid ORDER BY num DESC
+	</select>
+	
+	<select id="findsayIDAll" parameterType="java.lang.Integer" resultType="com.alumna.po.Say">
+		SELECT say.* FROM say WHERE id='${value}'
+	</select>
+	
 	
 </mapper>

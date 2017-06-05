@@ -41,7 +41,7 @@
 	        	  <a  href="javascript:;" id="persion" class="<%=session.getAttribute("uid")%>">个人主页</a>
 	        	</li>
 	        	<li>
-	        	  <a  href="#">热门动态</a>
+	        	  <a  href="say/findSayAll.action?falg=flag">热门动态</a>
 	        	</li>
 	        	<li>
 	        	  <a  href="#">校园活动</a>

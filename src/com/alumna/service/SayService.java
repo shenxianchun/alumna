@@ -36,4 +36,13 @@ public interface SayService {
 	
 	//删除id
 	public void deleteSay(String id)throws Exception;
+	
+	//统计每条说说的点赞数
+	public List<Loves> findCountloves()throws Exception;
+	
+	//统计每条说说的评论数 
+	public List<Review> findCountreview()throws Exception;
+	
+	//查找说说id对应的说说
+		public Say findsayIDAll(int id)throws Exception;
 }

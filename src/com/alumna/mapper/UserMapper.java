@@ -1,5 +1,7 @@
 package com.alumna.mapper;
 
+import java.util.List;
+
 import com.alumna.po.Graduate;
 import com.alumna.po.Student;
 import com.alumna.po.User;
@@ -40,5 +42,28 @@ public interface UserMapper {
     
     //更新毕业生头像信息
     public void updatePhotoGraduate(Graduate graduate)throws Exception;
+    
+    
+    //根据传入的条件查询对应的在校生信息
+    public List<Student> findStudentSearch(String s_where)throws Exception;
+    
+    //根据传入的条件查询对应的毕业生信息
+    public List<Graduate> findGraduateSearch(String s_where)throws Exception;
+    
+    
+  //根据传入的条件查询对应的在校生信息
+    public List<Student> findStudentCity(String s_where)throws Exception;
+    
+    //根据传入的条件查询对应的毕业生信息
+    public List<Graduate> findGraduateCity(String s_where)throws Exception;
+    
+    //统计动态
+    public int findCountsay(String uid)throws Exception;
+    
+    //统计点赞
+    public int findCountloves(String uid)throws Exception;
+    
+    //统计点赞
+    public int findCountreview(String uid)throws Exception;
     
 }

@@ -74,4 +74,22 @@ public class SayServiceImpl implements SayService {
 		sayMapper.deleteSay(id);
 	}
 
+	@Override
+	public List<Loves> findCountloves() throws Exception {
+		// TODO Auto-generated method stub
+		return sayMapper.findCountloves();
+	}
+
+	@Override
+	public List<Review> findCountreview() throws Exception {
+		// TODO Auto-generated method stub
+		return sayMapper.findCountreview();
+	}
+
+	@Override
+	public Say findsayIDAll(int id) throws Exception {
+		// TODO Auto-generated method stub
+		return sayMapper.findsayIDAll(id);
+	}
+
 }

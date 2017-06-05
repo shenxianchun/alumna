@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    	
                	<div class="person">
     			<img src="${sessionScope.user.photo}" alt="头像">
-    			<p><a href="#">${sessionScope.user.name}</a>
+    			<p><a href="javascript:void(0);">${sessionScope.user.name}</a>
     			<span>${fn:substring(sessionScope.user.entranceyear,0,4)}</span></p>
 	    	</div>
 	    		<!-- 他人资料部分 -->
@@ -76,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                    <p class="txt">
 		                    	<c:choose>
 					   				<c:when test="${sayVo.student.uid!=sessionScope.uid}"> 
-			                       		<span class="user">${sayVo.student.name}：</span>
+			                       		<span class="user"><a href="say/findotherUser.action?uid=${sayVo.student.uid}">${sayVo.student.name}</a>：</span>
 			                        </c:when>
 			                        <c:otherwise>
 			                        	<span class="user">我：</span>
@@ -90,7 +90,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                    <p class="txt">
 		                    	<c:choose>
 					   				<c:when test="${sayVo.graduate.uid!=sessionScope.uid}"> 
-			                       		<span class="user">${sayVo.graduate.name}：</span>
+			                       		<a href="say/findotherUser.action?uid=${sayVo.graduate.uid}"><span class="user">${sayVo.graduate.name}：</span></a>
 			                        </c:when>
 			                        <c:otherwise>
 			                        	<span class="user">我：</span>
@@ -117,7 +117,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                            <p class="comment-text">
 		                            <c:choose>
 										<c:when test="${reviewUserVo.student.uid!=sessionScope.uid}"> 
-											<span class="user">${reviewUserVo.student.name}</span>
+											<a href="say/findotherUser.action?uid=${reviewUserVo.student.uid}"><span class="user">${reviewUserVo.student.name}</span></a>
 										</c:when>
 										<c:otherwise>
 											<span class="user">我：</span>
@@ -131,7 +131,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		                            <p class="comment-text">
 		                            <c:choose>
 										<c:when test="${reviewUserVo.graduate.uid!=sessionScope.uid}"> 
-											<span class="user">${reviewUserVo.graduate.name}：</span>
+											<a href="say/findotherUser.action?uid=${reviewUserVo.graduate.uid}"><span class="user">${reviewUserVo.graduate.name}：</span></a>
 										</c:when>
 										<c:otherwise>
 											<span class="user">我：</span>

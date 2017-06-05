@@ -22,10 +22,10 @@
   					<a href="javascript:void(0);" onclick="openFileDialog()" class="uploadbtn">上传头像</a>
   				</li>
   				<li><a href="user/findUser.action">编辑资料</a></li>
-  				<li><a href="#">发表文章</a></li>
-  				<li><a href="#">我的相册</a></li>
-  				<li><a href="#">找校友</a></li>
-  				<li><a href="#">找同城</a></li>
+  				<li><a href="log/log.jsp">发表文章</a></li>
+  				<li><a href="log/findUserlog.action?uid=<%=session.getAttribute("uid") %>">我的文章</a></li>
+  				<li><a href="findstu.jsp">找校友</a></li>
+  				<li><a href="findcitystu.jsp">找同城</a></li>
   			</ul>
   		</div>
   	</div>

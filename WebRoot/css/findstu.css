@@ -114,7 +114,70 @@ div.center-content>ul li a:hover{
 }
 
 .concent{
-	width: 1000px;
-	height: 600px;
-	background-color: #EAE8E6;
+	width: 998px;
+	background-color: #F0F0F0;
+	border: 1px solid #BBB6B6;
+    box-shadow: 0 2px 2px #F0F0F0;
+}
+.concent .box_title{
+	width: 900px;
+	margin: 0 auto;
+	padding-top: 15px;
+}
+.concent .box_title ul li{
+	float: left;
+	margin-top: 10px;
+	margin-right: 20px;
+}
+.concent .box_title .txt1{
+	width: 150px;
+	height: 20px;
+}
+.concent .box_title .txt2{
+	width: 100px;
+	height: 20px;
+	padding-left: 30px;
+}
+.concent .box_title input{
+	float: right;
+	width: 56px;
+    height: 30px;
+    background-color: #203A39;
+    border: none;
+    color: #fff;
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: 8px;
+}
+.concent .stubox{
+	width: 900px;
+	margin-top: 60px;
+	margin: 60px auto;
+}
+.stubox table{
+	width: 900px;
+	border-spacing: 0px;
+    border-collapse: collapse;
+}
+.stubox table img{
+	width: 90px;
+	margin: 5px 0;
+}
+.stubox table tr:nth-child(odd){
+	background-color: #fff;
+}
+.stubox table tr:nth-child(even){
+	background-color: #F0F0F0;
+}
+.stubox table td{
+	border:1px solid #E5E5E3;
+	text-align: center;
+}
+.stubox .tpage{
+	text-align: center;
+	margin-top: 30px;
+}
+.stubox .tpage a{
+	font-weight: bold;
+	color: #00BEB7;
 }

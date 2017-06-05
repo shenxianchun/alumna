@@ -70,7 +70,41 @@
   	SELECT graduate.* FROM graduate WHERE uid=#{uid}
   </select>
   
+  <select id="findStudentSearch" parameterType="java.lang.String" resultType="com.alumna.po.Student">
+  	SELECT student.* FROM student WHERE id is not null 
+		${value}
+	order by id
+  </select>
   
+  <select id="findGraduateSearch" parameterType="java.lang.String" resultType="com.alumna.po.Graduate">
+  	SELECT graduate.* FROM graduate WHERE id is not null 
+		${value}
+	order by id
+  </select>
   
+   <select id="findStudentCity" parameterType="java.lang.String" resultType="com.alumna.po.Student">
+  	SELECT student.* FROM student WHERE id is not null 
+		${value}
+	order by id
+  </select>
+  
+  <select id="findGraduateCity" parameterType="java.lang.String" resultType="com.alumna.po.Graduate">
+  	SELECT graduate.* FROM graduate WHERE id is not null 
+		${value}
+	order by id
+  </select>
+  
+  <!-- 统计动态 -->
+  <select id="findCountsay" parameterType="java.lang.String" resultType="java.lang.Integer">
+  	SELECT count(*) FROM say WHERE uid='${value}'
+  </select>
+  <!-- 统计点赞 -->
+  <select id="findCountloves" parameterType="java.lang.String" resultType="java.lang.Integer">
+  	SELECT count(*) from loves WHERE sayid in (SELECT id FROM say WHERE uid='${value}')
+  </select>
+  <!-- 统计评论 -->
+  <select id="findCountreview" parameterType="java.lang.String" resultType="java.lang.Integer">
+  	SELECT count(*) FROM review WHERE uid='${value}'
+  </select>
   
 </mapper>

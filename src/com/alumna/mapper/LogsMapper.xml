@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.alumna.mapper.LogsMapper" >
-
+	<!-- 发表日志 -->
+	<insert id="insertLog" parameterType="com.alumna.po.Logs">
+		INSERT INTO logs(uid,title,content,createtime)
+		VALUES(#{uid},#{title},#{content},NOW())
+	</insert>
+	
+	<!-- 查找用户的文章 -->
+	<select id="findUserlog" parameterType="java.lang.String" resultType="com.alumna.po.Logs">
+		SELECT logs.* FROM logs WHERE uid='${value}'
+	</select>
+	<!-- 删除文章 -->
+	<delete id="deleteuserlog" parameterType="java.lang.String">
+		DELETE FROM logs WHERE id='${value}'
+	</delete>
+	
+	<!-- 文章显示 -->
+	<select id="findlog" parameterType="java.lang.String" resultType="com.alumna.po.Logs">
+		SELECT logs.* FROM logs WHERE id='${value}'
+	</select>
+	
 </mapper>

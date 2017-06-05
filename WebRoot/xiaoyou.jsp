@@ -169,6 +169,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        </c:forEach>
 		    </div>
 		    <!-- 校友动态结束 -->
+		    
+		    
 		    <!-- 可能认识的人 -->
 		    <div class="right">
 				<div class="right_one">

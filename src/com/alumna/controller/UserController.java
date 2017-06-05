@@ -61,6 +61,11 @@ public class UserController {
 			session.setAttribute("uid", users.getId());
 			session.setAttribute("number", users.getNumber());
 			session.setAttribute("role", users.getRole());
+			//统计动态、点赞、评论数
+			session.setAttribute("say", userService.findCountsay(users.getId().toString()));
+			session.setAttribute("loves",userService.findCountloves(users.getId().toString()));
+			session.setAttribute("review", userService.findCountreview(users.getId().toString()));
+			
 			if("0".equals(users.getRole())){
 				Student student=userService.findStudent(users.getId());
 				session.setAttribute("photo", student.getPhoto());
@@ -210,5 +215,60 @@ public class UserController {
 		}
 		return true;
 	}
+	
+	@RequestMapping("/SearchUser")
+	public @ResponseBody String SearchUser(@RequestBody Student student,HttpSession session)throws Exception{
+		String s_where="";
+		String courtyard=student.getCourtyard();
+		String specialty=student.getSpecialty();
+		String entranceyear=student.getEntranceyear();
+//		System.out.println(courtyard+":->"+":->"+specialty+":->"+entranceyear);
+		if(!"".equals(courtyard)){
+			s_where+=" AND courtyard='"+courtyard+"'";
+		}
+		if(!"".equals(specialty)){
+			s_where+=" AND specialty='"+specialty+"'";
+		}
+		if(!"".equals(entranceyear)){
+			s_where+=" AND entranceyear LIKE '"+entranceyear+"%'";
+		}
+		System.out.println("校友查询条件是："+s_where+"角色是："+student.getRole());
+		if("0".equals(student.getRole())){
+			session.setAttribute("suser",userService.findStudentSearch(s_where));
+		}else{
+			session.setAttribute("suser",userService.findGraduateSearch(s_where));
+		}
+		return "搜索成功";
+	}
+
+	@RequestMapping("/SearchUserCity")
+	public @ResponseBody String SearchUserCity(@RequestBody Student student,HttpSession session)throws Exception{
+		
+		String s_where="";
+		String address="";
+		String city=student.getCity();
+		String province=student.getProvince();
+		String entranceyear=student.getEntranceyear();
+		if(!"".equals(province)){
+			address=city+"-"+province;
+		}else{
+			address=city;
+		}
+//		System.out.println(courtyard+":->"+":->"+specialty+":->"+entranceyear);
+		if(!"".equals(address)){
+			s_where+="AND address LIKE '%"+address+"%'";
+		}
+		if(!"".equals(entranceyear)){
+			s_where+=" AND entranceyear LIKE '"+entranceyear+"%'";
+		}
+		System.out.println("同城查询条件是："+s_where+"角色是："+student.getRole());
+		if("0".equals(student.getRole())){
+			session.setAttribute("suser",userService.findStudentCity(s_where));
+		}else{
+			session.setAttribute("suser",userService.findGraduateCity(s_where));
+		}
+		return "搜索成功";
+	}
+	
 	
 }

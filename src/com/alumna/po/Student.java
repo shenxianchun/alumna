@@ -36,8 +36,58 @@ public class Student {
     private String home;
 
     private String address;
+    
+    private String role;
+    
+    private String city;
+    
+    private String province;
+    
+    
 
-    public Integer getId() {
+    /**
+	 * @return the city
+	 */
+	public String getCity() {
+		return city;
+	}
+
+	/**
+	 * @param city the city to set
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	/**
+	 * @return the province
+	 */
+	public String getProvince() {
+		return province;
+	}
+
+	/**
+	 * @param province the province to set
+	 */
+	public void setProvince(String province) {
+		this.province = province;
+	}
+
+	/**
+	 * @return the role
+	 */
+	public String getRole() {
+		return role;
+	}
+
+	/**
+	 * @param role the role to set
+	 */
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public Integer getId() {
         return id;
     }
 
